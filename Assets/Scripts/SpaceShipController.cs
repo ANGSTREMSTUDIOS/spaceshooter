@@ -6,13 +6,21 @@ public class SpaceShipController : MonoBehaviour {
 
     public GameObject vehicle;
     float turn;
-    public int rotationSpeed=1;
-    Transform rotus
 
-	void Start ()
-    {
-		
+    public int rotationSpeed=1;
+
+	Transform rotus;
+
+	// -------- --------
+
+	void Start(){
+
+		vehicle = GameObject.Find("Player");
+		rotus = GameObject.Find ("Player").transform;
+
 	}
+
+	// -------- --------
 
 	void Update ()
     {
