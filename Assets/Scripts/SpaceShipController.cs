@@ -5,18 +5,19 @@ using UnityEngine;
 public class SpaceShipController : MonoBehaviour {
 
     public GameObject vehicle;
-    float turn;
 
+    float sideways;
+	float forward;
+
+	public float speed = 1;
     public int rotationSpeed=1;
 
-	Transform rotus;
+	GameObject rotus;
 
 	// -------- --------
 
-	void Start(){
-
-		vehicle = GameObject.Find("Player");
-		rotus = GameObject.Find ("Player").transform;
+	void Start()
+	{
 
 	}
 
@@ -24,13 +25,37 @@ public class SpaceShipController : MonoBehaviour {
 
 	void Update ()
     {
-
-        turn = Input.GetAxis("Horizontal") * rotationSpeed;
-        transform.Translate(turn, 0, 0);
-        if(turn<0) vehicle.transform.Rotate(0, 0, 10);
-        else if (turn>0) vehicle.transform.Rotate(0, 0, 10);
-        else vehicle.transform.Rotate(0, 0, 0);
-        transform.rotation = Quaternion.Lerp(vehicle.transform.rotation, rotus.rotation , Time.time);
-
+		SpaceShipMovement ();
     }
+
+	// -------- --------
+
+	void SpaceShipMovement()
+	{
+
+		forward = Input.GetAxis ("Vertical") * speed;
+		if (transform.position.z < 8 && forward > 0) transform.Translate (0, 0, forward); 
+		if (transform.position.z > -9.5 && forward < 0) transform.Translate (0, 0, forward);
+
+		sideways = Input.GetAxis("Horizontal") * speed;
+		if(transform.position.x < 19 && sideways > 0) transform.Translate(sideways, 0, 0);
+		if(transform.position.x > -19 && sideways < 0) transform.Translate(sideways, 0, 0);
+
+		if (sideways < 0) 
+		{
+			rotus = GameObject.Find ("LeftIndicator");
+		}
+
+		if (sideways > 0)
+		{
+			rotus = GameObject.Find ("RightIndicator");
+		}
+
+		if (sideways == 0)
+		{
+			rotus = GameObject.Find ("LevelIndicator");
+		}
+
+		vehicle.transform.rotation = Quaternion.Slerp(vehicle.transform.rotation, rotus.transform.rotation , Time.deltaTime * rotationSpeed);
+	}
 }
