@@ -14,10 +14,15 @@ public class SpaceShipController : MonoBehaviour {
 
 	GameObject rotus;
 
+	public ParticleSystem FumesParticles;
+	ParticleSystem.EmissionModule emissionModule;
+
 	// -------- --------
 
 	void Start()
 	{
+
+		emissionModule = FumesParticles.emission;
 
 	}
 
@@ -36,6 +41,10 @@ public class SpaceShipController : MonoBehaviour {
 		forward = Input.GetAxis ("Vertical") * speed;
 		if (transform.position.z < 8 && forward > 0) transform.Translate (0, 0, forward); 
 		if (transform.position.z > -9.5 && forward < 0) transform.Translate (0, 0, forward);
+
+		if (forward > 0) emissionModule.rate = 200f;
+		if (forward < 0) emissionModule.rate = 2f;
+		if (forward == 0) emissionModule.rate = 20f;
 
 		sideways = Input.GetAxis("Horizontal") * speed;
 		if(transform.position.x < 19 && sideways > 0) transform.Translate(sideways, 0, 0);
