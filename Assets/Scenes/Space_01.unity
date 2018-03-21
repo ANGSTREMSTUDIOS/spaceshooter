@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43975493, g: 0.4881794, b: 0.5683984, a: 1}
+  m_IndirectSpecularColor: {r: 0.43975514, g: 0.48817998, b: 0.5683994, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -231,9 +231,12 @@ MonoBehaviour:
   Guns:
   - {fileID: 880020465}
   - {fileID: 897476345}
+  - {fileID: 1359603955}
   BulletPrefab: {fileID: 1541717012158430, guid: dd8391e2830b89b42afbee5e2f6bcf5f,
     type: 2}
   BulletSpeed: 15
+  ThreeGuns: 0
+  MoreBulletHoles: 0
 --- !u!4 &269156923
 Transform:
   m_ObjectHideFlags: 0
@@ -331,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 313796604}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -18, z: 5}
-  m_LocalScale: {x: 30, y: 20, z: 30}
+  m_LocalScale: {x: 30, y: 23, z: 30}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -3867,7 +3870,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 880020465}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 0, z: 1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
