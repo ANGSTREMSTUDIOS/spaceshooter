@@ -17,6 +17,10 @@ public class SpaceShipController : MonoBehaviour {
 	public ParticleSystem FumesParticles;
 	ParticleSystem.EmissionModule emissionModule;
 
+    public GameObject[] Guns = new GameObject[3];
+    public GameObject BulletPrefab;
+    public int BulletSpeed = 10;
+
 	// -------- --------
 
 	void Start()
@@ -24,7 +28,9 @@ public class SpaceShipController : MonoBehaviour {
 
 		emissionModule = FumesParticles.emission;
 
-	}
+        InvokeRepeating("SpaceShipShooting", 0f, 0.4f);
+
+    }
 
 	// -------- --------
 
@@ -67,4 +73,16 @@ public class SpaceShipController : MonoBehaviour {
 
 		vehicle.transform.rotation = Quaternion.Slerp(vehicle.transform.rotation, rotus.transform.rotation , Time.deltaTime * rotationSpeed);
 	}
+
+    void SpaceShipShooting()
+    {
+
+        for(int i=0; i<3; i++)
+        {
+        var bullet = (GameObject)Instantiate(BulletPrefab, Guns[i].transform.position, Guns[i].transform.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * BulletSpeed;
+        Destroy(bullet, 2.0f);
+        }
+
+    }
 }
