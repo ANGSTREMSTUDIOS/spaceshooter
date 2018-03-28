@@ -106,8 +106,9 @@ public class SpaceShipController : MonoBehaviour {
 			} 
 				
 			var bullet = (GameObject)Instantiate(BulletPrefab, Guns[m].transform.position, Guns[m].transform.rotation);
-			bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * BulletSpeed;
-			Destroy(bullet, 2.0f);
+            bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * BulletSpeed;
+            bullet.transform.rotation = Quaternion.Euler(90, 0, 0);
+            Destroy(bullet, 2.0f);
 
         }
 
