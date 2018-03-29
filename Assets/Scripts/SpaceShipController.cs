@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SpaceShipController : MonoBehaviour {
 
@@ -15,6 +16,12 @@ public class SpaceShipController : MonoBehaviour {
 	GameObject rotus;
 
 
+    public Image HealthBar;
+    public Image ShieldBar;
+    public float Health=100;
+    public float Shield=100;
+
+
 	public ParticleSystem FumesParticles;
 	ParticleSystem.EmissionModule emissionModule;
 
@@ -22,9 +29,9 @@ public class SpaceShipController : MonoBehaviour {
     public GameObject[] Guns = new GameObject[3];
     public GameObject BulletPrefab;
     public int BulletSpeed = 10;
+    int m;
 
-	public bool ThreeGuns = false;
-	public bool MoreBulletHoles = false;
+    public int GunUpdateStage=1;
 
 	// -------- --------
 
@@ -42,6 +49,11 @@ public class SpaceShipController : MonoBehaviour {
 	void Update ()
     {
 		SpaceShipMovement ();
+
+        HealthBar.fillAmount = Health / 100;
+        ShieldBar.fillAmount = Shield / 100;
+
+
     }
 
 	// -------- --------
@@ -82,29 +94,22 @@ public class SpaceShipController : MonoBehaviour {
     void SpaceShipShooting()
     {
 
-        for(int i=0; i<6; i++)
+        for(int i=0; i<3; i++)
         {
-			int m = i;
-		
-			if (ThreeGuns == false && MoreBulletHoles == false) 
-			{
-				if (i == 2)
-					break;	
-			}
+            if (GunUpdateStage == 1)
+            {
+                m = i;
+                if (m == 1) break;
+            }
 
-			if (ThreeGuns == true && MoreBulletHoles == false) 
-			{
-				if (i == 3)
-					break;
-			}
+            else if (GunUpdateStage == 2)
+            {
+                m = i + 1;
+                if (i == 2) break;
+            }
 
-			if (ThreeGuns == true && MoreBulletHoles == true) 
-			{
-				
-				if (i > 2)
-					m = i - 3;
-			} 
-				
+            else m = i;
+
 			var bullet = (GameObject)Instantiate(BulletPrefab, Guns[m].transform.position, Guns[m].transform.rotation);
             bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * BulletSpeed;
             bullet.transform.rotation = Quaternion.Euler(90, 0, 0);
