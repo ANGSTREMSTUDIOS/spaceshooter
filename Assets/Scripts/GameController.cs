@@ -5,7 +5,8 @@ using UnityEngine;
 public class GameController : MonoBehaviour {
 
     public GameObject BackGround;
-    public GameObject startPoint;
+    public GameObject SpawnPoint;
+	Vector3 startPoint;
     public int speed = 10;
 
 	public int travelDistance = 1;
@@ -17,7 +18,8 @@ public class GameController : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
-        InvokeRepeating("BackGroundSpawner", 0f, 1.2f);
+        InvokeRepeating("BackGroundSpawner", 0f, 3f);
+		startPoint = SpawnPoint.transform.position;
     }
 	
 	// Update is called once per frame
@@ -27,26 +29,20 @@ public class GameController : MonoBehaviour {
     }
 
     void BackGroundSpawner()
-    {
-        var plate = (GameObject)Instantiate(BackGround, startPoint.transform.position, startPoint.transform.rotation);
-        plate.GetComponent<Rigidbody>().velocity = -plate.transform.forward*speed;
-        plate.transform.rotation = Quaternion.Euler(90, 0, 0);
-        Destroy(plate, 6.0f);
+    {	
+		for (int i = 0; i < 2; i++)
+		{
+			if (i == 0)
+				startPoint.x = 20;
+			else
+				startPoint.x = -20;
+			
+			var plate = (GameObject)Instantiate(BackGround, startPoint, SpawnPoint.transform.rotation);
+			plate.GetComponent<Rigidbody>().velocity = -plate.transform.forward*speed;
+			plate.transform.rotation = Quaternion.Euler(90, 0, 0);
+			Destroy(plate, 7.0f);
+		}
     }
 
-	public void ShopManager()
-	{
-		for (int i = 0; i < 5; i++) 
-		{
-			startPos = Shop [i].transform.position;
-			if (UpGoing) endPos = Shop [i].transform.position + transform.up * travelDistance;
-			else endPos = Shop [i].transform.position - transform.up * travelDistance;
-			endPos.z=0;
-			Shop [i].transform.position = Vector3.Lerp (startPos, endPos, Time.deltaTime / 10);
-		}
-		if (UpGoing)
-			UpGoing = false;
-		else
-			UpGoing = true;
-	}
+
 }
