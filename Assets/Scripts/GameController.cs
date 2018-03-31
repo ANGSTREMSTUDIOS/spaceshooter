@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour {
 
+	public GameObject Camera;
+	float sideways;
+
     public GameObject BackGround;
     public GameObject SpawnPoint;
 	Vector3 startPoint;
@@ -25,7 +28,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-
+		CameraMovement ();
     }
 
     void BackGroundSpawner()
@@ -44,5 +47,11 @@ public class GameController : MonoBehaviour {
 		}
     }
 
-
+	void CameraMovement()
+	{
+		sideways = Input.GetAxis("Horizontal") * speed;
+		if(Camera.transform.position.x < 1 && sideways > 0) transform.Translate(sideways/30, 0, 0);
+		if(Camera.transform.position.x > -1 && sideways < 0) transform.Translate(sideways/30, 0, 0);
+	}
+		
 }

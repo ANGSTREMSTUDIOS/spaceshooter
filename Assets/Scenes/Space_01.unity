@@ -5090,6 +5090,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a36c82e3f2b084b987109e4d3751d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Camera: {fileID: 1645563187}
   BackGround: {fileID: 1073971482291062, guid: a36091d95d35569488e0a7acf2e2ecfa, type: 2}
   SpawnPoint: {fileID: 735821761}
   speed: 10

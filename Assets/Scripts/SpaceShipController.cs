@@ -70,8 +70,8 @@ public class SpaceShipController : MonoBehaviour {
 		if (forward == 0) emissionModule.rate = 20f;
 
 		sideways = Input.GetAxis("Horizontal") * speed;
-		if(transform.position.x < 16.3 && sideways > 0) transform.Translate(sideways, 0, 0);
-		if(transform.position.x > -16.3 && sideways < 0) transform.Translate(sideways, 0, 0);
+		if(transform.position.x < 19 && sideways > 0) transform.Translate(sideways, 0, 0);
+		if(transform.position.x > -19 && sideways < 0) transform.Translate(sideways, 0, 0);
 
 		if (sideways < 0) 
 		{
