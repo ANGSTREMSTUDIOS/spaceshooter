@@ -19,7 +19,16 @@ public class CoinBehaviour : MonoBehaviour {
 		
 		timeCounter += Time.deltaTime * JumpingSpeed;
 		transform.Rotate (Vector3.right * Time.deltaTime * RotationSpeed);
-		double y = Mathf.Cos (timeCounter);
+		double y = Mathf.Cos (timeCounter)/2;
 		transform.position = new Vector3 (transform.position.x, (float)y, transform.position.z);	
+	}
+
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "Player") 
+		{
+			SpaceShipController.money++;
+			Destroy (gameObject);
+		}
 	}
 }

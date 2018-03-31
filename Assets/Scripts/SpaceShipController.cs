@@ -20,6 +20,8 @@ public class SpaceShipController : MonoBehaviour {
     public Image ShieldBar;
     public float Health=100;
     public float Shield=100;
+	public Text BankAccount;
+	public static int money = 0;
 
 
 	public ParticleSystem FumesParticles;
@@ -52,6 +54,8 @@ public class SpaceShipController : MonoBehaviour {
 
         HealthBar.fillAmount = Health / 100;
         ShieldBar.fillAmount = Shield / 100;
+
+		BankAccount.text = "Money: " + money.ToString(); 
 
 
     }
@@ -118,4 +122,16 @@ public class SpaceShipController : MonoBehaviour {
         }
 
     }
+
+	void OnTriggerEnter(Collider other)
+	{
+		Debug.Log ("halo");
+
+		if(other.tag=="Coin")
+		{
+			money++;
+		}
+	}
+
+
 }
