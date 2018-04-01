@@ -10,6 +10,8 @@ public class SpaceShipController : MonoBehaviour {
     float sideways;
 	float forward;
 
+	private Vector2 touchOrigin = -Vector2.one;
+
 	public float speed = 1;
     public int rotationSpeed=1;
 
@@ -64,8 +66,39 @@ public class SpaceShipController : MonoBehaviour {
 
 	void SpaceShipMovement()
 	{
+		#if UNITY_STANDALONE
 
 		forward = Input.GetAxis ("Vertical") * speed;
+		sideways = Input.GetAxis("Horizontal") * speed;
+
+		#else
+
+		if(Input.touchCount > 0)
+		{
+			Touch myTouch = Input.touches[0];
+			if(myTouch.phase == TouchPhase.Began)
+			{
+				touchOrigin = myTouch.position;
+			}
+			else if (myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0)
+			{
+				Vector2 touchEnd = myTouch.position;
+
+				float x = touchEnd.x - touchOrigin.x;
+
+				float y = touchEnd.y - touchOrigin.y;
+
+				touchOrigin.x = -1;
+
+				if (Mathf.Abs(x) > Mathf.Abs(y))
+					sideways = x > 0 ? 1 : -1;
+				else
+					forward  = y > 0 ? 1 : -1;
+			}
+		}
+
+		#endif
+
 		if (transform.position.z < 8 && forward > 0) transform.Translate (0, 0, forward); 
 		if (transform.position.z > -9.5 && forward < 0) transform.Translate (0, 0, forward);
 
@@ -73,7 +106,6 @@ public class SpaceShipController : MonoBehaviour {
 		if (forward < 0) emissionModule.rate = 2f;
 		if (forward == 0) emissionModule.rate = 20f;
 
-		sideways = Input.GetAxis("Horizontal") * speed;
 		if(transform.position.x < 19 && sideways > 0) transform.Translate(sideways, 0, 0);
 		if(transform.position.x > -19 && sideways < 0) transform.Translate(sideways, 0, 0);
 
