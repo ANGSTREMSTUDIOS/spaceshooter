@@ -49,9 +49,8 @@ public class GameController : MonoBehaviour {
 
 	void CameraMovement()
 	{
-		sideways = Input.GetAxis("Horizontal") * speed;
-		if(Camera.transform.position.x < 1 && sideways > 0) transform.Translate(sideways/30, 0, 0);
-		if(Camera.transform.position.x > -1 && sideways < 0) transform.Translate(sideways/30, 0, 0);
+		if(Camera.transform.position.x < 1 && SpaceShipController.sideways > 0) transform.Translate(SpaceShipController.sideways/30, 0, 0);
+		if(Camera.transform.position.x > -1 && SpaceShipController.sideways < 0) transform.Translate(SpaceShipController.sideways/30, 0, 0);
 	}
 		
 }

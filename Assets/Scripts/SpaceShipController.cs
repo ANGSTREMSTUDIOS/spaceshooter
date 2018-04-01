@@ -7,7 +7,7 @@ public class SpaceShipController : MonoBehaviour {
 
     public GameObject vehicle;
 
-    float sideways;
+    public static float sideways;
 	float forward;
 
 	private Vector2 touchOrigin = -Vector2.one;
@@ -80,20 +80,25 @@ public class SpaceShipController : MonoBehaviour {
 			{
 				touchOrigin = myTouch.position;
 			}
-			else if (myTouch.phase == TouchPhase.Ended && touchOrigin.x >= 0)
+			else if (myTouch.phase == TouchPhase.Moved && touchOrigin.x >= 0)
 			{
 				Vector2 touchEnd = myTouch.position;
 
-				float x = touchEnd.x - touchOrigin.x;
+				sideways = (touchEnd.x - touchOrigin.x) / 20f;
 
-				float y = touchEnd.y - touchOrigin.y;
+				forward = (touchEnd.y - touchOrigin.y) / 20f;
 
-				touchOrigin.x = -1;
+				if (sideways > 1)
+					sideways = 1;
+				else if (sideways < -1)
+					sideways = -1;
 
-				if (Mathf.Abs(x) > Mathf.Abs(y))
-					sideways = x > 0 ? 1 : -1;
-				else
-					forward  = y > 0 ? 1 : -1;
+				if (forward > 1)
+					forward = 1;
+				else if (forward < -1)
+					forward = -1;
+
+
 			}
 		}
 
