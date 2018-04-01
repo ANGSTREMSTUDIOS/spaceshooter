@@ -4230,7 +4230,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1
-  Coin: {fileID: 1412048307871644, guid: 50b8842e8716a6947a86bb4a94581777, type: 2}
+  Coin: {fileID: 1024775055464074, guid: 50b8842e8716a6947a86bb4a94581777, type: 2}
 --- !u!54 &698148577
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5206,7 +5206,6 @@ GameObject:
   - component: {fileID: 1594621511}
   - component: {fileID: 1594621510}
   - component: {fileID: 1594621509}
-  - component: {fileID: 1594621514}
   - component: {fileID: 1594621512}
   - component: {fileID: 1594621513}
   m_Layer: 0
@@ -5306,17 +5305,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1594621514
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1594621508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fd0894c6e048074980f0f8bf073a9f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1645563187
 GameObject:
   m_ObjectHideFlags: 0
