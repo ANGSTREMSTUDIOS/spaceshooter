@@ -84,22 +84,25 @@ public class SpaceShipController : MonoBehaviour {
 			{
 				Vector2 touchEnd = myTouch.position;
 
-				sideways = (touchEnd.x - touchOrigin.x) / 20f;
+				sideways = (touchEnd.x - touchOrigin.x) / 350f;
 
-				forward = (touchEnd.y - touchOrigin.y) / 20f;
+				forward = (touchEnd.y - touchOrigin.y) / 750f;
 
 				if (sideways > 1)
 					sideways = 1;
 				else if (sideways < -1)
 					sideways = -1;
 
-				if (forward > 1)
-					forward = 1;
-				else if (forward < -1)
-					forward = -1;
-
-
+                if (forward > 1)
+                    forward = 1;
+                else if (forward < -1)
+                    forward = -1;
 			}
+            else if(myTouch.phase == TouchPhase.Ended || myTouch.phase == TouchPhase.Canceled)
+            {
+                forward = 0;
+                sideways = 0;
+            }
 		}
 
 		#endif
