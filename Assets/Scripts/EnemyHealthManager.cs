@@ -4,29 +4,34 @@ using UnityEngine;
 
 public class EnemyHealthManager : MonoBehaviour {
 
-	public int HP=1;
+	public int HP = 1;
+	public float Speed = 0.2f;
 
-	public ParticleSystem explosion;
+	public Transform explosion;
 
 	public GameObject Coin;
 	Quaternion CoinRotation;
-	bool coinLimit=false;
+	bool coinLimit = false;
 
-	// Use this for initialization
-	void Start () {
-		explosion.enableEmission=false;
+	// -------- --------
+
+	void Update(){
+
+		float x, z;
+		transform.position -= new Vector3 (0f, 1f, 0f) * Time.deltaTime;
+
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+	// -------- --------
 
 	void OnTriggerEnter(Collider other)
 	{
 		if (HP <= 0) {
-			explosion.enableEmission=true;
+			Transform e = Instantiate (explosion, transform.position, transform.rotation);
+
+			Destroy (e.gameObject, 1f);
 			Destroy (other.gameObject);
+
 			if (!coinLimit)
 				Instantiate (Coin, transform.position, CoinRotation);
 			coinLimit = true;

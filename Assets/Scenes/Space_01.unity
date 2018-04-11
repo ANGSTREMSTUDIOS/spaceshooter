@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311947, g: 0.38074005, b: 0.35872722, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -4232,7 +4232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HP: 1
-  explosion: {fileID: 698148583}
+  Speed: 0.2
+  explosion: {fileID: 4589872024804734, guid: 77e747243c91d7e4980ae9daba489f54, type: 2}
   Coin: {fileID: 1024775055464074, guid: 50b8842e8716a6947a86bb4a94581777, type: 2}
 --- !u!54 &698148577
 Rigidbody:
@@ -4426,10 +4427,10 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 0
+  moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 33063081
+  randomSeed: 101718490
   InitialModule:
     serializedVersion: 3
     enabled: 1
