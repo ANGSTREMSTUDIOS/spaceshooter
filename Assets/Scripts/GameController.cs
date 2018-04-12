@@ -18,10 +18,15 @@ public class GameController : MonoBehaviour {
 	Vector3 startPos;
 	Vector3 endPos;
 
-	// Use this for initialization
-	void Start ()
+    public GameObject[] Asteroids = new GameObject[1];
+    Vector3 AsteriodStartPoint;
+    public float AsteriodSpeed = 1;
+
+    // Use this for initialization
+    void Start ()
     {
         InvokeRepeating("BackGroundSpawner", 0f, 3f);
+        InvokeRepeating("AsteroidSpawnAndShot", 10f, 5f);
 		startPoint = SpawnPoint.transform.position;
     }
 	
@@ -53,4 +58,19 @@ public class GameController : MonoBehaviour {
 		if(Camera.transform.position.x > -1 && SpaceShipController.sideways < 0) transform.Translate(SpaceShipController.sideways/30, 0, 0);
 	}
 		
+    void AsteroidSpawnAndShot()
+    {
+        GameObject AsteroidPrefab = Asteroids[Random.Range(0, 1)];
+        Quaternion SomeRotation = new Quaternion(0,0,0,0);
+        Vector3 Direction = new Vector3(Random.Range(-10, 10), 0, Random.Range(0, 10));
+
+        AsteriodStartPoint.x = Random.Range(-20, 20);
+        AsteriodStartPoint.y = 0;
+        AsteriodStartPoint.z = 0;
+
+        var Asteriod = (GameObject)Instantiate(AsteroidPrefab, AsteriodStartPoint, SomeRotation);
+        Asteriod.GetComponent<Rigidbody>().velocity = Direction * AsteriodSpeed;
+        Asteriod.transform.rotation = Quaternion.Euler(90, 0, 0);
+        Destroy(Asteriod, 7.0f);
+    }
 }
