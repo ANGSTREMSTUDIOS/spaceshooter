@@ -8816,7 +8816,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1645563187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86a36c82e3f2b084b987109e4d3751d4, type: 3}
+  m_Script: {fileID: 11500000, guid: bc0d078503bcecd4ca19cbda030a01a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1645563187}
@@ -8830,6 +8830,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  Asteroids:
+  - {fileID: 1586765533915780, guid: 78682d331b65e4d449de6d205debfcec, type: 2}
+  AsteriodSpeed: 1
 --- !u!1 &1999160467
 GameObject:
   m_ObjectHideFlags: 0

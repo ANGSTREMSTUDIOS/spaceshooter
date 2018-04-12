@@ -62,14 +62,14 @@ public class GameController : MonoBehaviour {
     {
         GameObject AsteroidPrefab = Asteroids[Random.Range(0, 1)];
         Quaternion SomeRotation = new Quaternion(0,0,0,0);
-        Vector3 Direction = new Vector3(Random.Range(-10, 10), 0, Random.Range(0, 10));
+        Vector3 Direction = new Vector3(Random.Range(-10, 10), 0, Random.Range(1, 10));
 
         AsteriodStartPoint.x = Random.Range(-20, 20);
         AsteriodStartPoint.y = 0;
-        AsteriodStartPoint.z = 0;
+        AsteriodStartPoint.z = 10;
 
         var Asteriod = (GameObject)Instantiate(AsteroidPrefab, AsteriodStartPoint, SomeRotation);
-        Asteriod.GetComponent<Rigidbody>().velocity = Direction * AsteriodSpeed;
+        Asteriod.GetComponent<Rigidbody>().velocity = -Direction * AsteriodSpeed;
         Asteriod.transform.rotation = Quaternion.Euler(90, 0, 0);
         Destroy(Asteriod, 7.0f);
     }
