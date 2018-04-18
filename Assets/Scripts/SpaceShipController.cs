@@ -163,15 +163,5 @@ public class SpaceShipController : MonoBehaviour {
 
     }
 
-	void OnTriggerEnter(Collider other)
-	{
-		Debug.Log ("halo");
-
-		if(other.tag=="Coin")
-		{
-			money++;
-		}
-	}
-
 
 }

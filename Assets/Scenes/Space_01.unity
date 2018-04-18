@@ -8831,8 +8831,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Asteroids:
-  - {fileID: 1586765533915780, guid: 78682d331b65e4d449de6d205debfcec, type: 2}
-  AsteriodSpeed: 1
+  - {fileID: 1452061126668776, guid: 78682d331b65e4d449de6d205debfcec, type: 2}
+  AsteriodSpeed: 1.5
 --- !u!1 &1999160467
 GameObject:
   m_ObjectHideFlags: 0
