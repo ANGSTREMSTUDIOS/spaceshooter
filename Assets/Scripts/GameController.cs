@@ -22,6 +22,8 @@ public class GameController : MonoBehaviour {
     Vector3 AsteriodStartPoint;
     public float AsteriodSpeed = 1;
 
+    float timer = 0;;
+
     // Use this for initialization
     void Start ()
     {
@@ -34,6 +36,8 @@ public class GameController : MonoBehaviour {
 	void Update ()
     {
 		CameraMovement ();
+
+       
     }
 
     void BackGroundSpawner()

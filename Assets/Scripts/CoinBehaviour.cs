@@ -13,12 +13,12 @@ public class CoinBehaviour : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		Coin.transform.rotation = Quaternion.Euler(10, 0, -90);	
-	}
+		Coin.transform.rotation = Quaternion.Euler(10, 0, -90);
+        Destroy(gameObject, 20f);
+    }
 
 	// Update is called once per frame
 	void Update () {
-		Destroy (gameObject, 20f);
 		timeCounter += Time.deltaTime * JumpingSpeed;
 		Coin.transform.Rotate (Vector3.right * Time.deltaTime * RotationSpeed);
 		double y = Mathf.Cos (timeCounter)/2;
