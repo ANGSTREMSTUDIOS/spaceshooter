@@ -22,7 +22,7 @@ public class GameController : MonoBehaviour {
     Vector3 AsteriodStartPoint;
     public float AsteriodSpeed = 1;
 
-    float timer = 0;;
+    float timer = 0;
 
     // Use this for initialization
     void Start ()
@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-		CameraMovement ();
+		CameraMovement();
 
        
     }
