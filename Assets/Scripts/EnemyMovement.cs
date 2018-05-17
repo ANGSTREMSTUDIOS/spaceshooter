@@ -9,27 +9,27 @@ public class EnemyMovement : MonoBehaviour {
     public float freq = 1;
 
     public int helper = 1;
+    int difference;
 
-	// Use this for initialization
-	void Start ()
+    // Use this for initialization
+    void Start ()
     {
-
-
-	}
+        difference = Random.Range(11, 16);
+    }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        if (time < 1.3)
+        if (time < 1)
         {
             time += Time.deltaTime;
-            double z = -Mathf.Abs(Mathf.Tan(time)) * freq + 12;
+            double z = -Mathf.Abs(Mathf.Tan(time)) * freq + difference;
             float x = transform.position.x + 0.01f * speed;
             transform.position = new Vector3(x, 0, (float)z);
         } 
-        else if(time < 5)
+        else if(time < 1.1)
         {
-            GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -(helper - Time.deltaTime));
+            transform.Translate(0, 0, -(transform.position.z - 5 - Time.deltaTime)/20);
 
         }
 

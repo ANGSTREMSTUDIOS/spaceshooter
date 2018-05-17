@@ -24,12 +24,16 @@ public class GameController : MonoBehaviour {
 
     float timer = 0;
 
+    Quaternion Rotation;
+    public GameObject Enemy1;
+
     // Use this for initialization
     void Start ()
     {
         InvokeRepeating("BackGroundSpawner", 0f, 3f);
         InvokeRepeating("AsteroidSpawnAndShot", 10f, 5f);
-		startPoint = SpawnPoint.transform.position;
+        InvokeRepeating("Wave1", 3f, 10f);
+        startPoint = SpawnPoint.transform.position;
     }
 	
 	// Update is called once per frame
@@ -76,5 +80,13 @@ public class GameController : MonoBehaviour {
         Asteriod.GetComponent<Rigidbody>().velocity = -Direction * AsteriodSpeed;
         Asteriod.transform.rotation = Quaternion.Euler(90, 0, 0);
         Destroy(Asteriod, 7.0f);
+    }
+
+    void Wave1()
+    {
+        for (int i = -15; i < 20; i+=5)
+        {
+            Instantiate(Enemy1, new Vector3(i, 0, 0), Rotation);
+        }
     }
 }
