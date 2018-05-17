@@ -163,5 +163,14 @@ public class SpaceShipController : MonoBehaviour {
 
     }
 
+    public void GunUpdate()
+    {
+        if(money>=1)
+        {
+            GunUpdateStage++;
+            money--;
+        }
+    }
+
 
 }

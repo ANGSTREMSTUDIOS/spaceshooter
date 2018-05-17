@@ -25,6 +25,6 @@ public class EnemyShooting : MonoBehaviour {
         var bullet = (GameObject)Instantiate(BulletPrefab, Gun.transform.position, Gun.transform.rotation);
         bullet.GetComponent<Rigidbody>().velocity = new Vector3(0,0,-BulletSpeed);
         bullet.transform.rotation = Quaternion.Euler(90, 0, 0);
-        //Destroy(bullet, 2.0f);
+        Destroy(bullet, 2.0f);
     }
 }

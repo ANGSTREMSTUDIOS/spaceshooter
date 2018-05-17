@@ -88,5 +88,6 @@ public class GameController : MonoBehaviour {
         {
             Instantiate(Enemy1, new Vector3(i, 0, 0), Rotation);
         }
+
     }
 }

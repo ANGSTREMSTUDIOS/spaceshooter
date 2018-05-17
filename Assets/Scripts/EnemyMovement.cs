@@ -8,7 +8,6 @@ public class EnemyMovement : MonoBehaviour {
     public int speed = 1;
     public float freq = 1;
 
-    public int helper = 1;
     int difference;
 
     // Use this for initialization
@@ -33,13 +32,8 @@ public class EnemyMovement : MonoBehaviour {
 
         }
 
-
-
-        //musi byc bo on nagle spada nie wiadomo czemu xD
-
         if (transform.position.y<0)
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-
 
     }
 }
