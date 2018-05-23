@@ -18,13 +18,14 @@ public class CoinBehaviour : MonoBehaviour {
     }
 
 	// Update is called once per frame
-	void Update () {
-		timeCounter += Time.deltaTime * JumpingSpeed;
-		Coin.transform.Rotate (Vector3.right * Time.deltaTime * RotationSpeed);
-		double y = Mathf.Cos (timeCounter)/2;
-		Coin.transform.position = new Vector3 (Coin.transform.position.x, (float)y, Coin.transform.position.z);	
-		GetComponent<Rigidbody> ().velocity = -transform.forward * CoinSpeed;
-	}
+	void Update ()
+    {
+        timeCounter += Time.deltaTime * JumpingSpeed;
+        Coin.transform.Rotate(Vector3.right * Time.deltaTime * RotationSpeed);
+        double y = Mathf.Cos(timeCounter) / 2;
+        Coin.transform.position = new Vector3(Coin.transform.position.x, (float)y, Coin.transform.position.z);
+        GetComponent<Rigidbody>().velocity = -transform.forward * CoinSpeed;
+    }
 
 	void OnTriggerEnter(Collider other)
 	{
